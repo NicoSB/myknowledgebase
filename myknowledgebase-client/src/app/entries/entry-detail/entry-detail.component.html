@@ -1,30 +1,99 @@
-<div class="col-5">
-  <div class="card" *ngIf="entry">
+<div class="col-12">
+  <div class="card" *ngIf="entry" style="padding:8px">
     <div class="card-block">
       <div class="row">
         <div class="col-9">
-          <h4 class="card-title">{{ entry.title }}</h4>
+          <h4 class="div">{{ entry.title }}</h4>
         </div>
-        <div class="col-1">
+        <div class="col-3 text-right">
           <svg width="12" height="12" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#tag" /></svg>
-        </div>
-        <div class="col-2">
           <span style="margin-right:5px" class="badge badge-light" *ngFor="let tag of entry.tags">{{ tag }}</span>
         </div>
       </div>
-      <p class="card-text"> {{ entry.description }}</p>
-      <pre>
-        <code #snippet class="bash highlight-this">{{ entry.codeSnippet }}</code>
-      </pre>
       <div class="row">
-        <div class="col-1">
-          <svg width="12" height="12" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#link-external" /></svg>
-        </div>
-        <div class="col-11">
-          <a [href]="entry.url">{{ entry.url }}</a>
+        <div class="col-12">
+          <svg width="16" height="16" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#file" /></svg>
+          <p class="card-text"> {{ entry.description }}</p>
         </div>
       </div>
-        <button type="button" class="btn btn-outline-secondary btn-sm float-right" (click)="onEdit()">Edit</button>
+      <br>
+      <div class="row">
+        <div class="col-1">
+          <svg width="16" height="16" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#file-code" /></svg>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <section [innerHTML]="wrapCodeSnippet()" highlight-js-content=".highlight"></section>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-10">
+          <svg width="16" height="16" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#link-external" /></svg>
+          <a [href]="entry.url">{{ entry.url }}</a>
+        </div>
+        <div class="col-2 text-right">
+          <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onEdit()">Edit</button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="onDelete()">Delete</button>
+        </div>
+      </div>
+      <div class="row">
+      </div>
     </div>
   </div>
 </div>
+
+<!--<div>-->
+  <!--<div>Overview</div>-->
+  <!--<div>-->
+    <!--For full instructions on click <a href="https://github.com/Useful-Software-Solutions-Ltd/angular2-highlight-js/blob/master/readme.md"-->
+                                      <!--target="_blank">here</a>. To find out more about highlight.js can be found <a href="https://highlightjs.org/usage/">here</a>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<div>-->
+  <!--<div>Sample 1: using the HighlightJsContent directive</div>-->
+  <!--<div>-->
+    <!--<p>Use this directive to handle dynamic content which contains snippets.-->
+      <!--Both the sections below have innerHTML bound to the the sampleContent property.</p>-->
+    <!--<h4>Raw pre code without highlighting</h4>-->
+    <!--<section [innerHTML]="sampleContent"></section>-->
+    <!--<h4>Same again highlighted using HighlightJsService.highlight(element)</h4>-->
+    <!--<section [innerHTML]="sampleContent" highlight-js-content=".highlight"></section>-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--<button id="btnAddContent" md-raised-button color="primary" (click)="addContent()">highlight</button>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<div>-->
+  <!--<div>Sample 2: using the HighlightJsService</div>-->
+  <!--<div>-->
+    <!--<h4>Raw pre code without highlighting</h4>-->
+    <!--<pre>-->
+            <!--<code>-->
+                <!--class Greeter {{ '{' }}-->
+                    <!--constructor(public greeting: string) {{ '{' }} {{ '}' }}-->
+
+                    <!--greet() {{ '{' }}-->
+                        <!--return "hello world";-->
+                    <!--{{ '}' }}-->
+                <!--{{ '}' }};-->
+            <!--</code>-->
+        <!--</pre>-->
+    <!--<h4>Same again highlighted using HighlightJsService.highlight(element)</h4>-->
+    <!--<pre>-->
+            <!--<code #snippet class="typescript highlight-this">-->
+                <!--class Greeter {{ '{' }}-->
+                    <!--constructor(public greeting: string) {{ '{' }} {{ '}' }}-->
+
+                    <!--greet() {{ '{' }}-->
+                        <!--return "hello world";-->
+                    <!--{{ '}' }}-->
+                <!--{{ '}' }};-->
+            <!--</code>-->
+        <!--</pre>-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--<button id="btnHighlight" md-raised-button color="primary" (click)="highlightByService(snippet)">highlight</button>-->
+  <!--</div>-->
+<!--</div>-->

@@ -24,15 +24,19 @@ export class EntryDetailComponent implements OnInit, AfterViewInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.entryService.observeGetEntry(id).subscribe((entry: Entry) => {
       this.entry = entry;
+      console.log(this.el.nativeElement.querySelector('.highlight'));
     });
   }
 
   ngAfterViewInit(): void {
-    this.highlightService.highlight(this.el.nativeElement.querySelectorAll());
   }
 
 
   onEdit() {
     this.router.navigate(['edit'], {relativeTo : this.route});
+  }
+
+  wrapCodeSnippet() {
+    return '<pre><code class="highlight">' + this.entry.codeSnippet + '</code></pre>';
   }
 }
