@@ -11,6 +11,7 @@ import {HighlightJsService} from 'angular2-highlight-js';
 })
 export class EntryDetailComponent implements OnInit, AfterViewInit {
   private entry: Entry;
+  private id: Number;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,10 +22,9 @@ export class EntryDetailComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.entryService.observeGetEntry(id).subscribe((entry: Entry) => {
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.entryService.observeGetEntry(this.id).subscribe((entry: Entry) => {
       this.entry = entry;
-      console.log(this.el.nativeElement.querySelector('.highlight'));
     });
   }
 
@@ -34,6 +34,12 @@ export class EntryDetailComponent implements OnInit, AfterViewInit {
 
   onEdit() {
     this.router.navigate(['edit'], {relativeTo : this.route});
+  }
+
+  onDelete() {
+    this.entryService.observeDeleteEntry(this.id).subscribe(() => {
+      this.router.navigate(['entry']);
+    });
   }
 
   wrapCodeSnippet() {

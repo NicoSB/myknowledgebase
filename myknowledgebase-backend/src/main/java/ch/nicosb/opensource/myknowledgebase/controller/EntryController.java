@@ -62,4 +62,16 @@ public class EntryController {
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @CrossOrigin
+    @RequestMapping(value = "/entry/{id}", method = RequestMethod.DELETE, produces = "application/json")
+    public @ResponseBody
+    ResponseEntity<Void> deleteEntry(@PathVariable Long id) {
+        if (entryRepository.findOne(id) != null) {
+            entryRepository.delete(id);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }

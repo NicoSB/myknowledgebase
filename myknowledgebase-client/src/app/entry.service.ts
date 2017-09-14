@@ -26,4 +26,9 @@ export class EntryService {
     const entryUrl = environment.apiUrl + '/entry/' + entry.id;
     return this.http.put(entryUrl, entry);
   }
+
+  observeDeleteEntry(id: Number) {
+    const entryUrl = environment.apiUrl + '/entry/' + id;
+    return this.http.delete(entryUrl);
+  }
 }
