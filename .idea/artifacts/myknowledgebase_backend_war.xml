@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="myknowledgebase-backend:war">
+    <output-path>$PROJECT_DIR$/myknowledgebase-backend/target</output-path>
+    <root id="archive" name="myknowledgebase-0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="myknowledgebase-backend:war exploded" />
+    </root>
+  </artifact>
+</component>

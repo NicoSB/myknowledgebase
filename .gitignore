@@ -1,0 +1,39 @@
+# User-specific stuff:
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+.idea/libraries
+
+## Plugin-specific files:
+
+# IntelliJ
+out/
+target/
+
+# Angular/NodeJS
+/build/
+/benchpress-build/
+.DS_Store
+gen_docs.disable
+test.disable
+regression/temp*.html
+performance/temp*.html
+*~
+*.swp
+angular.js.tmproj
+node_modules/
+bower_components/
+angular.xcodeproj
+*.iml
+.agignore
+.lvimrc
+/tmp/
+/scripts/bower/bower-*
+.vscode
+*.stackdump
+environments.ts
+
+# Common
+*.iml
+*.log
+npm-debug.log*

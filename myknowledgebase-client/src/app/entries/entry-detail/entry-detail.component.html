@@ -1,0 +1,30 @@
+<div class="col-5">
+  <div class="card" *ngIf="entry">
+    <div class="card-block">
+      <div class="row">
+        <div class="col-9">
+          <h4 class="card-title">{{ entry.title }}</h4>
+        </div>
+        <div class="col-1">
+          <svg width="12" height="12" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#tag" /></svg>
+        </div>
+        <div class="col-2">
+          <span style="margin-right:5px" class="badge badge-light" *ngFor="let tag of entry.tags">{{ tag }}</span>
+        </div>
+      </div>
+      <p class="card-text"> {{ entry.description }}</p>
+      <pre>
+        <code #snippet class="bash highlight-this">{{ entry.codeSnippet }}</code>
+      </pre>
+      <div class="row">
+        <div class="col-1">
+          <svg width="12" height="12" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#link-external" /></svg>
+        </div>
+        <div class="col-11">
+          <a [href]="entry.url">{{ entry.url }}</a>
+        </div>
+      </div>
+        <button type="button" class="btn btn-outline-secondary btn-sm float-right" (click)="onEdit()">Edit</button>
+    </div>
+  </div>
+</div>

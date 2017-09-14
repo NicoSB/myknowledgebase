@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="entryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            formControlName="title"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            type="text"
+            id="description"
+            formControlName="description"
+            rows="5"
+            class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="codeSnippet">Code Snippet</label>
+          <textarea
+            type="text"
+            id="codeSnippet"
+            formControlName="codeSnippet"
+            rows="5"
+            class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="url">URL</label>
+          <input
+            type="url"
+            id="url"
+            formControlName="url"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="tags">tags</label>
+          <input
+            type="text"
+            id="tags"
+            formControlName="tags"
+            class="form-control">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <div class="alert alert-danger" role="alert" *ngIf="updateFailed">
+          Wasn't able to update the entry with id: {{ entry.id }}. Does it exist?
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
