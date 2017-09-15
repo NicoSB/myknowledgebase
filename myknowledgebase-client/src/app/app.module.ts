@@ -12,6 +12,7 @@ import { EntryEditComponent } from './entries/entry-edit/entry-edit.component';
 import {AppRoutingModule} from './app-routing.module';
 import { EntryDetailComponent } from './entries/entry-detail/entry-detail.component';
 import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
     EntriesComponent,
     EntryComponent,
     EntryEditComponent,
-    EntryDetailComponent
+    EntryDetailComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
