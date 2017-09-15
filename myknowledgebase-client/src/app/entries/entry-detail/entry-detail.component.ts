@@ -9,9 +9,10 @@ import {HighlightJsService} from 'angular2-highlight-js';
   templateUrl: './entry-detail.component.html',
   styleUrls: ['./entry-detail.component.css']
 })
-export class EntryDetailComponent implements OnInit, AfterViewInit {
+export class EntryDetailComponent implements OnInit {
   private entry: Entry;
   private id: Number;
+  private deleteFailed = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,9 +29,6 @@ export class EntryDetailComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-  }
-
 
   onEdit() {
     this.router.navigate(['edit'], {relativeTo : this.route});
@@ -38,7 +36,11 @@ export class EntryDetailComponent implements OnInit, AfterViewInit {
 
   onDelete() {
     this.entryService.observeDeleteEntry(this.id).subscribe(() => {
-      this.router.navigate(['entry']);
+        this.deleteFailed = false;
+        this.router.navigate(['entry']);
+    },
+    () => {
+      this.deleteFailed = true;
     });
   }
 

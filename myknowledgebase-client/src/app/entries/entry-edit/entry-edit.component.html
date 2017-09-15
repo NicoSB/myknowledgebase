@@ -45,10 +45,10 @@
             class="form-control">
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
-        <div class="alert alert-danger" role="alert" *ngIf="updateFailed">
-          Wasn't able to update the entry with id: {{ entry.id }}. Does it exist?
-        </div>
       </form>
     </div>
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="updateFailed">
+    Wasn't able to update the entry with id: {{ entry.id }}. Does it exist?
   </div>
 </div>

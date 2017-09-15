@@ -38,62 +38,14 @@
           <button type="button" class="btn btn-danger btn-sm" (click)="onDelete()">Delete</button>
         </div>
       </div>
-      <div class="row">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert" *ngIf="deleteFailed">
+        Cannot delete this entry at the moment!
       </div>
     </div>
   </div>
 </div>
-
-<!--<div>-->
-  <!--<div>Overview</div>-->
-  <!--<div>-->
-    <!--For full instructions on click <a href="https://github.com/Useful-Software-Solutions-Ltd/angular2-highlight-js/blob/master/readme.md"-->
-                                      <!--target="_blank">here</a>. To find out more about highlight.js can be found <a href="https://highlightjs.org/usage/">here</a>-->
-  <!--</div>-->
-<!--</div>-->
-<!--<div>-->
-  <!--<div>Sample 1: using the HighlightJsContent directive</div>-->
-  <!--<div>-->
-    <!--<p>Use this directive to handle dynamic content which contains snippets.-->
-      <!--Both the sections below have innerHTML bound to the the sampleContent property.</p>-->
-    <!--<h4>Raw pre code without highlighting</h4>-->
-    <!--<section [innerHTML]="sampleContent"></section>-->
-    <!--<h4>Same again highlighted using HighlightJsService.highlight(element)</h4>-->
-    <!--<section [innerHTML]="sampleContent" highlight-js-content=".highlight"></section>-->
-  <!--</div>-->
-  <!--<div>-->
-    <!--<button id="btnAddContent" md-raised-button color="primary" (click)="addContent()">highlight</button>-->
-  <!--</div>-->
-<!--</div>-->
-<!--<div>-->
-  <!--<div>Sample 2: using the HighlightJsService</div>-->
-  <!--<div>-->
-    <!--<h4>Raw pre code without highlighting</h4>-->
-    <!--<pre>-->
-            <!--<code>-->
-                <!--class Greeter {{ '{' }}-->
-                    <!--constructor(public greeting: string) {{ '{' }} {{ '}' }}-->
-
-                    <!--greet() {{ '{' }}-->
-                        <!--return "hello world";-->
-                    <!--{{ '}' }}-->
-                <!--{{ '}' }};-->
-            <!--</code>-->
-        <!--</pre>-->
-    <!--<h4>Same again highlighted using HighlightJsService.highlight(element)</h4>-->
-    <!--<pre>-->
-            <!--<code #snippet class="typescript highlight-this">-->
-                <!--class Greeter {{ '{' }}-->
-                    <!--constructor(public greeting: string) {{ '{' }} {{ '}' }}-->
-
-                    <!--greet() {{ '{' }}-->
-                        <!--return "hello world";-->
-                    <!--{{ '}' }}-->
-                <!--{{ '}' }};-->
-            <!--</code>-->
-        <!--</pre>-->
-  <!--</div>-->
-  <!--<div>-->
-    <!--<button id="btnHighlight" md-raised-button color="primary" (click)="highlightByService(snippet)">highlight</button>-->
-  <!--</div>-->
-<!--</div>-->
