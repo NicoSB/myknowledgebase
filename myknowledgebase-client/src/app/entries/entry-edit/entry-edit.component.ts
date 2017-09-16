@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Entry} from '../entry/entry.model';
 import {EntryService} from '../../entry.service';
 
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-entry-edit',
   templateUrl: './entry-edit.component.html',
@@ -18,7 +20,8 @@ export class EntryEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private entryService: EntryService) {
+              private entryService: EntryService,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -68,5 +71,9 @@ export class EntryEditComponent implements OnInit {
           this.updateFailed = true;
         });
     }
+  }
+
+  onCancel() {
+    this.location.back();
   }
 }
