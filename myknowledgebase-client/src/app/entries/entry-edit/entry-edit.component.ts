@@ -50,7 +50,6 @@ export class EntryEditComponent implements OnInit {
   }
 
   onSubmit() {
-
     this.entry = this.entryForm.getRawValue();
     this.entry.tags = this.entryForm.get('tags').value.split(' ');
 

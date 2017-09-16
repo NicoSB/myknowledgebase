@@ -10,25 +10,25 @@
           <span style="margin-right:5px" class="badge badge-light" *ngFor="let tag of entry.tags">{{ tag }}</span>
         </div>
       </div>
-      <div class="row">
+      <div class="row" *ngIf="entry.description">
         <div class="col-12">
           <svg width="16" height="16" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#file" /></svg>
           <p class="card-text"> {{ entry.description }}</p>
         </div>
       </div>
       <br>
-      <div class="row">
+      <div class="row" *ngIf="entry.codeSnippet">
         <div class="col-1">
           <svg width="16" height="16" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#file-code" /></svg>
         </div>
       </div>
-      <div class="row">
+      <div class="row" *ngIf="entry.codeSnippet">
         <div class="col-12">
           <section [innerHTML]="wrapCodeSnippet()" highlight-js-content=".highlight"></section>
         </div>
       </div>
       <br>
-      <div class="row">
+      <div class="row" *ngIf="entry.url">
         <div class="col-10">
           <svg width="16" height="16" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#link-external" /></svg>
           <a [href]="entry.url">{{ entry.url | shortenUrl }}</a>
