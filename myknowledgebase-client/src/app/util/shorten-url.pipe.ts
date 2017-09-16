@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'urlShorten'
+  name: 'shortenUrl'
 })
 export class ShortenUrlPipe implements PipeTransform {
 
