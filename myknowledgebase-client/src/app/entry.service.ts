@@ -31,4 +31,9 @@ export class EntryService {
     const entryUrl = environment.apiUrl + '/entry/' + id;
     return this.http.delete(entryUrl);
   }
+
+  observeCreateEntry(entry: Entry): Observable<Entry> {
+    const entriesUrl = environment.apiUrl + '/entry';
+    return this.http.post(entriesUrl, entry);
+  }
 }

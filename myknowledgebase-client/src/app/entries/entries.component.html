@@ -1,3 +1,13 @@
-<div *ngFor="let entryEl of entries">
-  <app-entry [entry]="entryEl"></app-entry>
+<div class="row">
+  <div class="col-12">
+    <div *ngFor="let entryEl of entries">
+      <app-entry [entry]="entryEl"></app-entry>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-secondary" (click)="onAdd()">Add Entry</button>
+    </div>
+  </div>
 </div>

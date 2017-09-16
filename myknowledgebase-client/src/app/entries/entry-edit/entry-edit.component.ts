@@ -14,6 +14,7 @@ export class EntryEditComponent implements OnInit {
   entryForm: FormGroup;
   entry: Entry;
   updateFailed = false;
+  editMode = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -30,29 +31,42 @@ export class EntryEditComponent implements OnInit {
     });
 
     const id = +this.route.snapshot.paramMap.get('id');
-    this.entryService.observeGetEntry(id).subscribe((entry: Entry) => {
-      this.entry = entry;
-      this.entryForm.setValue({
-        'title': entry.title,
-        'description': entry.description,
-        'codeSnippet': entry.codeSnippet,
-        'url': entry.url,
-        'tags': entry.tags.join(' ')
+    if (id) {
+      this.editMode = true;
+      this.entryService.observeGetEntry(id).subscribe((entry: Entry) => {
+        this.entry = entry;
+        this.entryForm.setValue({
+          'title': entry.title,
+          'description': entry.description,
+          'codeSnippet': entry.codeSnippet,
+          'url': entry.url,
+          'tags': entry.tags.join(' ')
+        });
       });
-    });
+    }
   }
 
   onSubmit() {
+
     this.entry = this.entryForm.getRawValue();
-    this.entry.id = +this.route.snapshot.paramMap.get('id');
     this.entry.tags = this.entryForm.get('tags').value.split(' ');
-    console.log(this.entry);
-    this.entryService.observeUpdateEntry(this.entry).subscribe(() => {
-      this.updateFailed = false;
-      this.router.navigate(['/entry/' + this.entry.id]);
-    },
-    () => {
-      this.updateFailed = true;
-    });
+
+    if (this.editMode) {
+      this.entryService.observeUpdateEntry(this.entry).subscribe(() => {
+          this.updateFailed = false;
+          this.router.navigate(['/entry/' + this.entry.id]);
+        },
+        () => {
+          this.updateFailed = true;
+        });
+    } else {
+      this.entryService.observeCreateEntry(this.entry).subscribe((entry: Entry) => {
+          this.updateFailed = false;
+          this.router.navigate(['/entry/' + entry.id]);
+        },
+        () => {
+          this.updateFailed = true;
+        });
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Entry} from './entry/entry.model';
 import {EntryService} from '../entry.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,10 @@ export class EntriesComponent implements OnInit {
 
   entries: Entry[];
 
-  constructor(private entryService: EntryService) {
-  }
+  constructor(
+    private entryService: EntryService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.entryService.observeGetAllEntries().subscribe((entries: Entry[]) => {
@@ -20,4 +23,7 @@ export class EntriesComponent implements OnInit {
     });
   }
 
+  onAdd() {
+    this.router.navigate(['entry', 'new']);
+  }
 }

@@ -7,6 +7,7 @@ import {EntryDetailComponent} from './entries/entry-detail/entry-detail.componen
 
 const routes: Routes = [
   {path: 'entry', component: EntriesComponent},
+  {path: 'entry/new', component: EntryEditComponent},
   {path: 'entry/:id', component: EntryDetailComponent},
   {path: 'entry/:id/edit', component: EntryEditComponent},
   {path: '', component: EntriesComponent}
