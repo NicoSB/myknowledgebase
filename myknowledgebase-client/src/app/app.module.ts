@@ -13,6 +13,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { EntryDetailComponent } from './entries/entry-detail/entry-detail.component';
 import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
 import { HeaderComponent } from './header/header.component';
+import { ShortenUrlPipe } from './util/shorten-url.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HeaderComponent } from './header/header.component';
     EntryComponent,
     EntryEditComponent,
     EntryDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    ShortenUrlPipe
   ],
   imports: [
     BrowserModule,
