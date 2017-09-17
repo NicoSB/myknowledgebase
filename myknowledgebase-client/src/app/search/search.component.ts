@@ -31,8 +31,12 @@ export class SearchComponent implements OnInit {
 
   onSearch() {
     const tags: string = this.searchForm.get('tags').value;
-    const tagArray = tags.split(' ');
-    this.router.navigate(['entry'], { queryParams: { tags: tagArray }});
+    if (tags) {
+      const tagArray = tags.split(' ');
+      this.router.navigate(['entry'], { queryParams: { tags: tagArray }});
+    } else {
+      this.router.navigate(['entry']);
+    }
   }
 
   emitTitle() {
