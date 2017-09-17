@@ -25,7 +25,6 @@ public class EntryController {
     @RequestMapping(value = "/entry", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     Iterable<Entry> findEntries(@RequestParam(required = false) String[] tags) {
-        System.out.println("findEntries " + String.valueOf(tags == null));
         if (tags != null) {
             return entryRepository.findDistinctByTagsIn(Arrays.asList(tags));
         } else {

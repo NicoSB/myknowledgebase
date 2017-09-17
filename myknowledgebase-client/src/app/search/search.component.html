@@ -3,7 +3,7 @@
     <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="form-inline">
       <div class="input-group mb-2 mr-sm-2 mb-sm-0">
         <div class="input-group-addon">title</div>
-        <input type="text" class="form-control" id="title" formControlName="title">
+        <input type="text" class="form-control" id="title" formControlName="title" [value]="titleFilter">
       </div>
       <div class="input-group mb-2 mr-sm-2 mb-sm-0">
         <div class="input-group-addon">tags</div>

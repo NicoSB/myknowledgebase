@@ -12,6 +12,7 @@ import {isArray} from "util";
 })
 export class EntriesComponent implements OnInit, OnDestroy {
 
+  titleFilter: string;
   entries: Entry[];
   tags: string[] = [];
   subscription: Subscription;
@@ -54,5 +55,10 @@ export class EntriesComponent implements OnInit, OnDestroy {
 
   onAdd() {
     this.router.navigate(['entry', 'new']);
+  }
+
+  onFilterChange(filter: string) {
+    console.log(filter);
+    this.titleFilter = filter;
   }
 }

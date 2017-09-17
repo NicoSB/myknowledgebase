@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-12">
-    <app-search></app-search>
+    <app-search (titleEmitter)="onFilterChange($event)"></app-search>
   </div>
 </div>
 <hr>
 <div class="row">
   <div class="col-12">
-    <div *ngFor="let entryEl of entries" class="mt-1">
+    <div *ngFor="let entryEl of entries | title:titleFilter" class="mt-1">
       <app-entry [entry]="entryEl"></app-entry>
     </div>
   </div>

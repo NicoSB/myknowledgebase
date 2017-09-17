@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnChanges, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
@@ -7,7 +7,10 @@ import {Router} from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnChanges {
+
+  @Output() titleEmitter = new EventEmitter();
+  titleFilter = '';
 
   searchForm: FormGroup;
 
@@ -17,8 +20,17 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      'tags': new FormControl(null, [Validators.required])
+      'tags': new FormControl(null, [Validators.required]),
+      'title': new FormControl(null)
     });
+
+    this.searchForm.valueChanges.subscribe(data => {
+      this.emitTitle();
+    });
+  }
+
+  ngOnChanges() {
+    console.log(this.titleFilter);
   }
 
   onSearch() {
@@ -27,4 +39,7 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['entry'], { queryParams: { tags: tagArray }});
   }
 
+  emitTitle() {
+    this.titleEmitter.emit(this.searchForm.get('title').value);
+  }
 }
