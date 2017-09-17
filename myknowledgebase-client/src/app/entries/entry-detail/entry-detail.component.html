@@ -28,10 +28,10 @@
         </div>
       </div>
       <br>
-      <div class="row" *ngIf="entry.url">
+      <div class="row">
         <div class="col-10">
-          <svg width="16" height="16" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#link-external" /></svg>
-          <a [href]="entry.url">{{ entry.url | shortenUrl }}</a>
+          <svg width="16" height="16" class="octicon" aria-hidden="true" *ngIf="entry.url"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#link-external" /></svg>
+          <a [href]="entry.url" *ngIf="entry.url">{{ entry.url | shortenUrl }}</a>
         </div>
         <div class="col-2 text-right">
           <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onEdit()">Edit</button>
