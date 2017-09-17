@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit, OnChanges {
+export class SearchComponent implements OnInit {
 
   @Output() titleEmitter = new EventEmitter();
   titleFilter = '';
@@ -27,10 +27,6 @@ export class SearchComponent implements OnInit, OnChanges {
     this.searchForm.valueChanges.subscribe(data => {
       this.emitTitle();
     });
-  }
-
-  ngOnChanges() {
-    console.log(this.titleFilter);
   }
 
   onSearch() {

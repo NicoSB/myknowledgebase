@@ -58,7 +58,6 @@ export class EntriesComponent implements OnInit, OnDestroy {
   }
 
   onFilterChange(filter: string) {
-    console.log(filter);
     this.titleFilter = filter;
   }
 }
