@@ -2,6 +2,7 @@ package ch.nicosb.opensource.myknowledgebase.controller;
 
 import ch.nicosb.opensource.myknowledgebase.model.Entry;
 import ch.nicosb.opensource.myknowledgebase.repository.EntryRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.Arrays;
 /**
  * The rest interface for CRUD operations concerning the Entry model.
  */
+@Slf4j
 @Controller
 public class EntryController {
 
@@ -23,6 +25,7 @@ public class EntryController {
     @RequestMapping(value = "/entry", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     Iterable<Entry> findEntries(@RequestParam(required = false) String[] tags) {
+        System.out.println("findEntries " + String.valueOf(tags == null));
         if (tags != null) {
             return entryRepository.findDistinctByTagsIn(Arrays.asList(tags));
         } else {

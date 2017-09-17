@@ -1,16 +1,14 @@
-<div class="col-12">
-  <div class="card" style="padding:5px">
-    <div class="card-block">
-      <div class="row">
-        <div class="col-9">
-          <h4 class="card-title" (click)="onView()">{{ entry.title }}</h4>
-        </div>
-        <div class="col-3 text-right">
-          <svg width="12" height="12" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#tag" /></svg>
-          <span class="badge badge-light float-right" *ngFor="let tag of entry.tags">{{ tag }}</span>
-        </div>
+<div class="card">
+  <div class="card-block p-2">
+    <div class="row">
+      <div class="col-9">
+        <h4 class="card-title" (click)="onView()">{{ entry.title }}</h4>
       </div>
-      <p class="card-text"> {{ entry.description }}</p>
+      <div class="col-3 text-right">
+        <svg width="12" height="12" class="octicon" aria-hidden="true"><use xlink:href="/node_modules/octicons/build/sprite.octicons.svg#tag" /></svg>
+        <span class="badge badge-light float-right" *ngFor="let tag of entry.tags">{{ tag }}</span>
+      </div>
     </div>
+    <p class="card-text" *ngIf="entry.description"> {{ entry.description }}</p>
   </div>
 </div>

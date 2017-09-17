@@ -1,13 +1,19 @@
 <div class="row">
   <div class="col-12">
-    <div *ngFor="let entryEl of entries">
+    <app-search></app-search>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-12">
+    <div *ngFor="let entryEl of entries" class="mt-1">
       <app-entry [entry]="entryEl"></app-entry>
     </div>
   </div>
-  <br>
-  <div class="row">
-    <div class="col-12">
-      <button class="btn btn-secondary" (click)="onAdd()">Add Entry</button>
-    </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-12">
+    <button class="btn btn-secondary" (click)="onAdd()">Add Entry</button>
   </div>
 </div>

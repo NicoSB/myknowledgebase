@@ -14,6 +14,7 @@ import { EntryDetailComponent } from './entries/entry-detail/entry-detail.compon
 import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
 import { HeaderComponent } from './header/header.component';
 import { ShortenUrlPipe } from './util/shorten-url.pipe';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ShortenUrlPipe } from './util/shorten-url.pipe';
     EntryEditComponent,
     EntryDetailComponent,
     HeaderComponent,
-    ShortenUrlPipe
+    ShortenUrlPipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,10 @@
 import {Injectable, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 import {environment} from '../environments/environment';
-import {Subject} from 'rxjs/Subject';
 import {Entry} from './entries/entry/entry.model';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
+import {URLSearchParams} from '@angular/http';
 
 @Injectable()
 export class EntryService {
@@ -17,8 +17,17 @@ export class EntryService {
     return this.http.get(entriesUrl);
   }
 
+  observeGetEntriesByTags(tags: string[]): Observable<Entry[]> {
+    const entriesUrl = environment.apiUrl + '/entry';
+    const params = new HttpParams().set('tags', tags.toString());
+
+    return this.http.get(entriesUrl, {
+      params: params
+    });
+  }
+
   observeGetEntry(id: Number): Observable<Entry> {
-    const entryUrl = environment.apiUrl + '/entry/' + id;
+    const entryUrl   = environment.apiUrl + '/entry/' + id;
     return this.http.get(entryUrl);
   }
 
