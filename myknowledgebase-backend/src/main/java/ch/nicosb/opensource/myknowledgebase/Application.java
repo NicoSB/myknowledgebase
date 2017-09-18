@@ -45,19 +45,19 @@ public class Application extends SpringBootServletInitializer {
                 .build();
     }
 
-    @Bean
-    public WebMvcConfigurerAdapter adapter() {
-        return new WebMvcConfigurerAdapter() {
-            @Override
-            public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(entryRequestInterceptor()).addPathPatterns("/entry/**");
-                super.addInterceptors(registry);
-            }
-        };
-    }
-
-    @Bean
-    public EntryRequestInterceptor entryRequestInterceptor() {
-        return new EntryRequestInterceptor();
-    }
+//    @Bean
+//    public WebMvcConfigurerAdapter adapter() {
+//        return new WebMvcConfigurerAdapter() {
+//            @Override
+//            public void addInterceptors(InterceptorRegistry registry) {
+//                registry.addInterceptor(entryRequestInterceptor()).addPathPatterns("/entry/**");
+//                super.addInterceptors(registry);
+//            }
+//        };
+//    }
+//
+//    @Bean
+//    public EntryRequestInterceptor entryRequestInterceptor() {
+//        return new EntryRequestInterceptor();
+//    }
 }
