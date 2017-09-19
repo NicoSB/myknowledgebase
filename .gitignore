@@ -3,6 +3,7 @@
 .idea/**/tasks.xml
 .idea/dictionaries
 .idea/libraries
+.idea/artifacts
 
 ## Plugin-specific files:
 
