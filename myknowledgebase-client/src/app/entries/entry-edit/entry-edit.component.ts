@@ -17,6 +17,7 @@ export class EntryEditComponent implements OnInit {
   entry: Entry;
   updateFailed = false;
   editMode = false;
+  id: Number;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -33,10 +34,10 @@ export class EntryEditComponent implements OnInit {
       'tags': new FormControl(null, [Validators.required])
     });
 
-    const id = +this.route.snapshot.paramMap.get('id');
-    if (id) {
+    this.id = +this.route.snapshot.paramMap.get('id');
+    if (this.id) {
       this.editMode = true;
-      this.entryService.observeGetEntry(id).subscribe((entry: Entry) => {
+      this.entryService.observeGetEntry(this.id).subscribe((entry: Entry) => {
         this.entry = entry;
         this.entryForm.setValue({
           'title': entry.title,
@@ -54,6 +55,8 @@ export class EntryEditComponent implements OnInit {
     this.entry.tags = this.entryForm.get('tags').value.split(' ');
 
     if (this.editMode) {
+      console.log(this.id);
+      this.entry.id = this.id;
       this.entryService.observeUpdateEntry(this.entry).subscribe(() => {
           this.updateFailed = false;
           this.router.navigate(['/entry/' + this.entry.id]);
