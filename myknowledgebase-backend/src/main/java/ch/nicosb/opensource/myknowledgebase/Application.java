@@ -1,6 +1,7 @@
 package ch.nicosb.opensource.myknowledgebase;
 
 import ch.nicosb.opensource.myknowledgebase.interceptor.EntryRequestInterceptor;
+import ch.nicosb.opensource.myknowledgebase.interceptor.UUIDInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.filters.RequestDumperFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -45,17 +47,22 @@ public class Application extends SpringBootServletInitializer {
                 .build();
     }
 
-//    @Bean
-//    public WebMvcConfigurerAdapter adapter() {
-//        return new WebMvcConfigurerAdapter() {
-//            @Override
-//            public void addInterceptors(InterceptorRegistry registry) {
-//                registry.addInterceptor(entryRequestInterceptor()).addPathPatterns("/entry/**");
-//                super.addInterceptors(registry);
-//            }
-//        };
-//    }
-//
+    @Bean
+    public WebMvcConfigurerAdapter adapter() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addInterceptors(InterceptorRegistry registry) {
+                registry.addInterceptor(uuidInterceptor()).addPathPatterns("/entry/**");
+                super.addInterceptors(registry);
+            }
+        };
+    }
+
+    @Bean
+    public HandlerInterceptor uuidInterceptor() {
+        return new UUIDInterceptor();
+    }
+
 //    @Bean
 //    public EntryRequestInterceptor entryRequestInterceptor() {
 //        return new EntryRequestInterceptor();

@@ -2,13 +2,13 @@
 <Configuration status="WARN">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %c{1.} [%X{id}]  : %msg%n"/>
         </Console>
         <File name="SpringLog" fileName="${sys:catalina.home}/logs/spring.log" immediateFlush="true" append="true">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %c{1.} : %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %c{1.} [%X{id}]  : %msg%n"/>
         </File>
         <File name="ApplicationLog" fileName="${sys:catalina.home}/logs/app.log" immediateFlush="true" append="true">
-          <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %c{1.} : %msg%n"/>
+          <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %c{1.} [%X{id}]    : %msg%n"/>
         </File>
     </Appenders>
     <Loggers>
@@ -16,6 +16,10 @@
             <AppenderRef ref="SpringLog" />
         </Logger>
         <Logger name="ch.nicosb.opensource.myknowledgebase.controller" level="info" additivity="false">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="ApplicationLog" />
+        </Logger>
+        <Logger name="ch.nicosb.opensource.myknowledgebase.interceptor" level="info" additivity="false">
             <AppenderRef ref="Console" />
             <AppenderRef ref="ApplicationLog" />
         </Logger>
