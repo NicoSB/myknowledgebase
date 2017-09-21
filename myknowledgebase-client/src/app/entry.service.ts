@@ -4,7 +4,6 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../environments/environment';
 import {Entry} from './entries/entry/entry.model';
 import {Observable} from 'rxjs/Observable';
-import {URLSearchParams} from '@angular/http';
 
 @Injectable()
 export class EntryService {

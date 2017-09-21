@@ -1,0 +1,9 @@
+<br>
+<div class="card mr-3">
+  <div class="card-header">
+    Popular tags
+  </div>
+  <div class="card-body">
+    <span style="margin-right:5px" class="badge badge-light" *ngFor="let tag of tags"><a href="/entry?tags={{tag}}">{{ tag }}</a></span>
+  </div>
+</div>

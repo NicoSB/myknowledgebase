@@ -16,6 +16,10 @@ import { HeaderComponent } from './header/header.component';
 import { ShortenUrlPipe } from './util/shorten-url.pipe';
 import { SearchComponent } from './search/search.component';
 import { TitlePipe } from './util/title.pipe';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { TagsComponent } from './statistics/tags/tags.component';
+import {StatisticsService} from "./statistics.service";
+import { GeneralStatisticsComponent } from './statistics/general-statistics/general-statistics.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { TitlePipe } from './util/title.pipe';
     HeaderComponent,
     ShortenUrlPipe,
     SearchComponent,
-    TitlePipe
+    TitlePipe,
+    StatisticsComponent,
+    TagsComponent,
+    GeneralStatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,7 @@ import { TitlePipe } from './util/title.pipe';
   ],
   providers: [
     EntryService,
+    StatisticsService,
     HighlightJsService
   ],
   bootstrap: [AppComponent]
