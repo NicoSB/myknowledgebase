@@ -1,9 +1,16 @@
 <app-header></app-header>
-<div class="row">
+<div class="row" *ngIf="!faulty; else errorComponent">
   <div class="col-10 p-4">
     <router-outlet></router-outlet>
   </div>
   <div class="col-2">
     <app-statistics></app-statistics>
+  </div>
+</div>
+<div class="row m-4">
+  <div class="col-12">
+    <ng-template #errorComponent>
+      <app-error></app-error>
+    </ng-template>
   </div>
 </div>

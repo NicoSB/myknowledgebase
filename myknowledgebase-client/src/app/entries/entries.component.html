@@ -4,7 +4,7 @@
   </div>
 </div>
 <hr>
-<div class="row">
+<div class="row" *ngIf="entries">
   <div class="col-12">
     <div *ngFor="let entryEl of entries | title:titleFilter" class="mt-1">
       <app-entry [entry]="entryEl"></app-entry>

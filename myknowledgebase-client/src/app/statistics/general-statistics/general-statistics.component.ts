@@ -8,8 +8,8 @@ import {StatisticsService} from '../../statistics.service';
 })
 export class GeneralStatisticsComponent implements OnInit {
 
-  private entryCount: Number = -1;
-  private tagCount: Number = -1;
+  private entryCount: Number;
+  private tagCount: Number;
 
   constructor(private statisticsService: StatisticsService) { }
 

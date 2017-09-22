@@ -20,6 +20,8 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { TagsComponent } from './statistics/tags/tags.component';
 import {StatisticsService} from "./statistics.service";
 import { GeneralStatisticsComponent } from './statistics/general-statistics/general-statistics.component';
+import { ErrorComponent } from './error/error.component';
+import {ErrorStateService} from "./error-state.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { GeneralStatisticsComponent } from './statistics/general-statistics/gene
     TitlePipe,
     StatisticsComponent,
     TagsComponent,
-    GeneralStatisticsComponent
+    GeneralStatisticsComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { GeneralStatisticsComponent } from './statistics/general-statistics/gene
   providers: [
     EntryService,
     StatisticsService,
-    HighlightJsService
+    HighlightJsService,
+    ErrorStateService
   ],
   bootstrap: [AppComponent]
 })

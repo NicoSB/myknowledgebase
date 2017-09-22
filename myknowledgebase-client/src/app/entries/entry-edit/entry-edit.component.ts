@@ -5,6 +5,7 @@ import {Entry} from '../entry/entry.model';
 import {EntryService} from '../../entry.service';
 
 import {Location} from '@angular/common';
+import {ErrorStateService} from "../../error-state.service";
 
 @Component({
   selector: 'app-entry-edit',
@@ -22,6 +23,7 @@ export class EntryEditComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private entryService: EntryService,
+              private errorStateService: ErrorStateService,
               private location: Location) {
   }
 
@@ -37,6 +39,7 @@ export class EntryEditComponent implements OnInit {
     this.id = +this.route.snapshot.paramMap.get('id');
     if (this.id) {
       this.editMode = true;
+      this.errorStateService.emitErrorState(false);
       this.entryService.observeGetEntry(this.id).subscribe((entry: Entry) => {
         this.entry = entry;
         this.entryForm.setValue({
@@ -46,7 +49,11 @@ export class EntryEditComponent implements OnInit {
           'url': entry.url,
           'tags': entry.tags.join(' ')
         });
-      });
+      },
+      (error => {
+        console.log(error);
+        this.errorStateService.emitErrorState(true);
+      }));
     }
   }
 
@@ -55,7 +62,6 @@ export class EntryEditComponent implements OnInit {
     this.entry.tags = this.entryForm.get('tags').value.split(' ');
 
     if (this.editMode) {
-      console.log(this.id);
       this.entry.id = this.id;
       this.entryService.observeUpdateEntry(this.entry).subscribe(() => {
           this.updateFailed = false;

@@ -4,6 +4,7 @@ import {EntryService} from '../entry.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {isArray} from "util";
+import {ErrorStateService} from "../error-state.service";
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class EntriesComponent implements OnInit, OnDestroy {
 
   constructor(
     private entryService: EntryService,
+    private errorStateService: ErrorStateService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -41,10 +43,19 @@ export class EntriesComponent implements OnInit, OnDestroy {
     if (this.tags.length === 0) {
       this.entryService.observeGetAllEntries().subscribe((entries: Entry[]) => {
         this.entries = entries;
+        this.errorStateService.emitErrorState(false);
+      },
+      (error) => {
+        console.log(error);
+        this.errorStateService.emitErrorState(true);
       });
     } else {
       this.entryService.observeGetEntriesByTags(this.tags).subscribe((entries: Entry[]) => {
         this.entries = entries;
+      },
+      (error) => {
+        console.log(error);
+        this.errorStateService.emitErrorState(true);
       });
     }
   }

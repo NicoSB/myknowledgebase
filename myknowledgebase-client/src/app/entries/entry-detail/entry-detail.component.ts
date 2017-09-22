@@ -1,8 +1,8 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EntryService} from '../../entry.service';
 import {Entry} from '../entry/entry.model';
-import {HighlightJsService} from 'angular2-highlight-js';
+import {ErrorStateService} from '../../error-state.service';
 
 @Component({
   selector: 'app-entry-detail',
@@ -18,15 +18,19 @@ export class EntryDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private entryService: EntryService,
-    private highlightService: HighlightJsService,
-    private el: ElementRef
+    private errorStateService: ErrorStateService
   ) { }
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
     this.entryService.observeGetEntry(this.id).subscribe((entry: Entry) => {
       this.entry = entry;
-    });
+      this.errorStateService.emitErrorState(false);
+    },
+    (error => {
+      console.log(error);
+      this.errorStateService.emitErrorState(true);
+    }));
   }
 
 
